@@ -1,6 +1,6 @@
 package App;
 
-import GeoHash.GeoHash;
+import GeoHash.*;
 import org.json.*;
 
 
@@ -19,11 +19,14 @@ public class Requete {
     private ArrayList<RechercheNom> listeRechercheNom;
     private ArrayList<RechercheDate> listeRechercheDate;
     private ArrayList<RechercheZone> listeRechercheZone;
+    private ArrayList<String> listeNom;
 
     public Requete(){
         this.listeRechercheNom = new ArrayList<>();
         this.listeRechercheDate = new ArrayList<>();
         this.listeRechercheZone = new ArrayList<>();
+        this.listeNom = new ArrayList<>();
+
     }
 
     private static String readAll(Reader rd) throws IOException{
@@ -61,7 +64,7 @@ public class Requete {
         return url;
     }
 
-    public String getURLZone(String nomScientifique, GeoHash geohash){
+    public String getURLZone(String nomScientifique, String geohash){
         if(nomScientifique.isEmpty()) {
             String url = "https://api.obis.org/v3/occurrence?geometry=" +geohash;
             return url;
@@ -125,18 +128,86 @@ public class Requete {
 
             RechercheNom rechercheNom = new RechercheNom(scientificName, coordonnees, occurence, precision);
             listeRechercheNom.add(rechercheNom);
-
-
         }
     }
+
+    public void creerRechercheDate(String scientificName, int precision, String dateDebut, String dateFin, JSONObject JsonRoot){
+        JSONArray resultatRecherche = JsonRoot.getJSONArray("features");
+        for(Object object : resultatRecherche ) {
+            JSONObject recherche = (JSONObject) object;
+            ArrayList<Point2D> coordonnees = new ArrayList<>();
+            JSONArray fauxJsonCoords = recherche.getJSONObject("geometry").getJSONArray("coordinates");
+            for(Object fauxObjectPoint2D : fauxJsonCoords){
+                JSONArray ArrayPoint2D = (JSONArray) fauxObjectPoint2D;
+                for (Object objectPoint2D : ArrayPoint2D){
+                    JSONArray jsonPoint2D = (JSONArray) objectPoint2D;
+                    double x = jsonPoint2D.getDouble(0);
+                    double y = jsonPoint2D.getDouble(1);
+
+                    Point2D point2D = new Point2D(x,y);
+                    coordonnees.add(point2D);
+                }
+            }
+
+
+            Object objectOccurence = recherche.getJSONObject("properties").getInt("n");
+            int occurence = (int) objectOccurence;
+
+            RechercheDate rechercheDate = new RechercheDate(scientificName, coordonnees, occurence, precision, dateDebut, dateFin);
+            listeRechercheDate.add(rechercheDate);
+        }
+    }
+
+    public void creerRechercheZone(String geoHash, JSONObject JsonRoot){
+        JSONArray resultatRecherche = JsonRoot.getJSONArray("results");
+        for(Object object : resultatRecherche ) {
+            JSONObject recherche = (JSONObject) object;
+            String scientificName = "";
+            if(!recherche.isNull("scientificName")) {
+                scientificName = recherche.getString("scientificName");
+            }
+            String order = "";
+            if(!recherche.isNull("order")) {
+                order = recherche.getString("order");
+            }
+            String superclass = "";
+            if(!recherche.isNull("superclass")) {
+                superclass = recherche.getString("superclass");
+            }
+            String recordedBy = "";
+            if(!recherche.isNull("recordedBy")) {
+                recordedBy = recherche.getString("recordedBy");
+            }
+            String species = "";
+            if(!recherche.isNull("species")) {
+                species = recherche.getString("species");
+            }
+
+            RechercheZone rechercheZone = new RechercheZone(geoHash, scientificName, order, superclass, recordedBy, species);
+            listeRechercheZone.add(rechercheZone);
+        }
+    }
+
+    public void listeNom(JSONObject JsonRoot){
+        JSONArray resultatRecherche =  JsonRoot.getJSONArray("");
+        for(Object object : resultatRecherche ) {
+            JSONObject recherche = (JSONObject) object;
+            String scientificName = recherche.getString("scientificName");
+            listeNom.add(scientificName);
+        }
+    }
+
 
     public  static void main(String[] args){
 
         Requete requete = new Requete();
-        JSONObject requin = requete.getStartJSon("src/Selachii.json");
-        requete.creerRechercheNom("Selachii", 3, requin);
-        for(RechercheNom rechercheNom : requete.listeRechercheNom){
-            System.out.println(rechercheNom.getCoord());
+        Location location = new Location("", 42.89062500, 3.51562500);
+        String geoHash = GeoHashHelper.getGeohash(location,3);
+        String url =  requete.getURLZone("", geoHash);
+        JSONObject jsonRoot = requete.readJsonFromUrl(url);
+        requete.creerRechercheZone(geoHash, jsonRoot);
+        for(RechercheZone rechercheZone : requete.listeRechercheZone){
+            System.out.println(rechercheZone.getScientificName());
         }
     }
 
