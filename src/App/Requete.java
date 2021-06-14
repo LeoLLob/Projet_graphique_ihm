@@ -104,6 +104,29 @@ public class Requete {
         return new JSONObject(json);
     }
 
+    public static JSONArray readJsonFromUrlListeNom(String url) {
+        String json = "";
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_1_1)
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .connectTimeout(Duration.ofSeconds(20))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .timeout(Duration.ofMinutes(2))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+        try {
+            json = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body).get(10, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new JSONArray(json);
+    }
+
     public void creerRechercheNom(String scientificName, int precision, JSONObject JsonRoot){
         JSONArray resultatRecherche = JsonRoot.getJSONArray("features");
         for(Object object : resultatRecherche ) {
@@ -188,12 +211,11 @@ public class Requete {
         }
     }
 
-    public void listeNom(JSONObject JsonRoot){
-        JSONArray resultatRecherche =  JsonRoot.getJSONArray("");
-        for(Object object : resultatRecherche ) {
-            JSONObject recherche = (JSONObject) object;
-            String scientificName = recherche.getString("scientificName");
-            listeNom.add(scientificName);
+    public void listeNom(JSONArray JsonRoot){
+        for(Object Object : JsonRoot) {
+            JSONObject recherche = (JSONObject) Object;
+            String nom = recherche.getString("scientificName");
+            listeNom.add(nom);
         }
     }
 
@@ -203,12 +225,13 @@ public class Requete {
         Requete requete = new Requete();
         Location location = new Location("", 42.89062500, 3.51562500);
         String geoHash = GeoHashHelper.getGeohash(location,3);
-        String url =  requete.getURLZone("", geoHash);
-        JSONObject jsonRoot = requete.readJsonFromUrl(url);
-        requete.creerRechercheZone(geoHash, jsonRoot);
-        for(RechercheZone rechercheZone : requete.listeRechercheZone){
-            System.out.println(rechercheZone.getScientificName());
+        String url =  requete.getURLNom("D");
+        JSONArray jsonRoot = requete.readJsonFromUrlListeNom(url);
+        requete.listeNom(jsonRoot);
+        for(String nom : requete.listeNom){
+            System.out.println(nom);
         }
+
     }
 
 }

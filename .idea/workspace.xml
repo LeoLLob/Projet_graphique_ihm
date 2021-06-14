@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="hey salut a tous les amis c'est david lafarge pokemon">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet_graphique_ihm/App/RechercheZone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet_graphique_ihm/App/RechercheZone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projet_graphique_ihm/App/Requete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projet_graphique_ihm/App/Requete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/RechercheZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/RechercheZone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Requete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Requete.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +145,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/json/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
