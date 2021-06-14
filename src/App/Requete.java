@@ -231,9 +231,7 @@ public class Requete {
         for(String nom : requete.listeNom){
             System.out.println(nom);
         }
-
     }
-
 }
 
 
