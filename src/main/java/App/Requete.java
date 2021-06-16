@@ -53,18 +53,18 @@ public class Requete {
         return null;
     }
 
-    public String getURL(String nomScientifique, int precision){
+    public static String getURL(String nomScientifique, int precision){
        String url = "https://api.obis.org/v3/occurrence/grid/" + precision +"?scientificname=" + nomScientifique;
        return url;
     }
 
-    public String getURLDate(String nomScientifique, int precision, String dateDebut, String dateFin){
+    public static String getURLDate(String nomScientifique, int precision, String dateDebut, String dateFin){
         String url = "https://api.obis.org/v3/occurrence/grid/" + precision + "?scientificname=" + nomScientifique +
                 "&startdate=" + dateDebut + "&enddate=" + dateFin;
         return url;
     }
 
-    public String getURLZone(String nomScientifique, String geohash){
+    public static String getURLZone(String nomScientifique, String geohash){
         if(nomScientifique.isEmpty()) {
             String url = "https://api.obis.org/v3/occurrence?geometry=" +geohash;
             return url;
@@ -74,11 +74,10 @@ public class Requete {
         }
     }
 
-    public String getURLNom(String chaine){
+    public static String getURLNom(String chaine){
 
         String url = "https://api.obis.org/v3/taxon/complete/verbose/"  + chaine;
         return url;
-
     }
 
     public static JSONObject readJsonFromUrl(String url) {
