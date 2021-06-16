@@ -1,43 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
-   <right>
-      <VBox prefHeight="300.0" prefWidth="145.0" spacing="10.0" BorderPane.alignment="CENTER">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphic.Controller">
+   <children>
+      <Pane layoutX="-149.0" layoutY="-11.0" prefHeight="681.0" prefWidth="954.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Option 1" />
-            <RadioButton mnemonicParsing="false" text="Option 2" />
-            <RadioButton mnemonicParsing="false" text="Option 3" />
+            <Pane fx:id="pane3D" layoutX="149.0" layoutY="11.0" prefHeight="572.0" prefWidth="600.0" style="-fx-background-color: #DCDCDC#DCDCDC;">
+               <children>
+                  <Separator layoutX="597.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="670.0" prefWidth="5.0" />
+               </children>
+            </Pane>
+            <Slider fx:id="idSlider" blockIncrement="1.0" layoutX="749.0" layoutY="500.0" majorTickUnit="2.0" max="12.0" min="1.0" minorTickCount="1" prefHeight="63.0" prefWidth="197.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Button fx:id="idSearch" layoutX="779.0" layoutY="608.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="141.0" text="Search" />
+            <DatePicker fx:id="idDateBox" layoutX="820.0" layoutY="338.0" prefHeight="26.0" prefWidth="122.0" />
+            <TextField fx:id="idRegion" layoutX="755.0" layoutY="172.0" prefHeight="42.0" prefWidth="184.0" promptText="Région" />
+            <TextArea layoutX="149.0" layoutY="578.0" prefHeight="102.0" prefWidth="600.0" promptText="Console..">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <TextField fx:id="idDuree" layoutX="755.0" layoutY="372.0" prefHeight="33.0" prefWidth="184.0" promptText="Durée en mois" />
+            <CheckBox fx:id="idPrec" layoutX="756.0" layoutY="471.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="97.0" text="Précision :" />
+            <Separator layoutX="748.0" layoutY="446.0" prefHeight="25.0" prefWidth="205.0" />
+            <Separator layoutX="748.0" layoutY="572.0" prefHeight="18.0" prefWidth="205.0" />
+            <Label layoutX="759.0" layoutY="341.0" prefHeight="19.0" prefWidth="61.0" text="Départ :  ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="744.0" layoutY="138.0" prefHeight="18.0" prefWidth="211.0" />
+            <RadioButton fx:id="idZone" layoutX="759.0" layoutY="39.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" text="Recherche par zone">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="idNom" layoutX="759.0" layoutY="93.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" text="Recherche par nom">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <CheckBox fx:id="idDate" layoutX="759.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Date :" />
+            <Separator layoutX="745.0" layoutY="288.0" prefHeight="18.0" prefWidth="205.0" />
+            <TextField fx:id="idInterv" layoutX="755.0" layoutY="413.0" prefHeight="33.0" prefWidth="184.0" promptText="Nombres d'intervalles" />
+            <TextField fx:id="idEespece" layoutX="755.0" layoutY="237.0" prefHeight="42.0" prefWidth="184.0" promptText="Nom de l'espèce" />
          </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </VBox>
-   </right>
-   <bottom>
-      <HBox prefHeight="34.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </HBox>
-   </bottom>
-   <center>
-      <Pane fx:id="pane3D" prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </center>
-</BorderPane>
+      </Pane>
+   </children>
+</AnchorPane>
