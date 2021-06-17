@@ -1,5 +1,6 @@
 package App;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,17 +37,29 @@ class RequeteTest {
     }
 
     @Test
-    void readJsonFromUrl() {
-        JSONObject actual = new JSONObject(App.Requete.readJsonFromUrl("https://api.obis.org/v3/taxon/complete/verbose/de"));
-        //JSONAssert.assertEquals();
+    @DisplayName("Lire le JSON local")
+    void getStartJSon(){
+        JSONObject actual = App.Requete.getStartJSon("src/main/java/Selachii.json");
+        assertEquals(163261, actual.getJSONArray("features").getJSONObject(0).getJSONObject("properties").getInt("n"));
     }
 
     @Test
+    @DisplayName("Lire un JSONObject a partir d'un URL")
+    void readJsonFromUrl() {
+        JSONObject actual = App.Requete.readJsonFromUrl("https://api.obis.org/v3/occurrence/grid/3?scientificname=Selachii");
+        assertEquals(163261, actual.getJSONArray("features").getJSONObject(0).getJSONObject("properties").getInt("n"));
+    }
+
+    @Test
+    @DisplayName("Lire un JSONArray a partir d'un URL")
     void readJsonFromUrlListeNom() {
+        JSONArray actual = App.Requete.readJsonFromUrlListeNom("https://api.obis.org/v3/taxon/complete/verbose/de");
+        assertEquals("Deinococcus-Thermus", actual.getJSONObject(0).getString("scientificName"));
     }
 
     @Test
     void creerRechercheNom() {
+
     }
 
     @Test
