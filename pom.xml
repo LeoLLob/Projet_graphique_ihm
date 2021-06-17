@@ -13,12 +13,8 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.7.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>1.5.0</version>
-        </dependency>
     </dependencies>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
