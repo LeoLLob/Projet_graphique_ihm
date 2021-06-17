@@ -56,21 +56,4 @@ class RequeteTest {
         JSONArray actual = App.Requete.readJsonFromUrlListeNom("https://api.obis.org/v3/taxon/complete/verbose/de");
         assertEquals("Deinococcus-Thermus", actual.getJSONObject(0).getString("scientificName"));
     }
-
-    @Test
-    void creerRechercheNom() {
-
-    }
-
-    @Test
-    void creerRechercheDate() {
-    }
-
-    @Test
-    void creerRechercheZone() {
-    }
-
-    @Test
-    void listeNom() {
-    }
 }

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="les problemes">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="tests mis à jour">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projet_graphique_ihm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_graphique_ihm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App/Requete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App/Requete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/App/Requete.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/App/Requete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/App/RequeteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/App/RequeteTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/java/App/RequeteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/java/App/RequeteTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +168,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/json-20210307.jar" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -189,7 +190,7 @@
       <recent name="Graphic" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RequeteTest.readJsonFromUrlListeNom">
+  <component name="RunManager" selected="Application.Main ">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -355,10 +356,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main " />
         <item itemvalue="JUnit.RequeteTest.readJsonFromUrlListeNom" />
         <item itemvalue="JUnit.RequeteTest.readJsonFromUrl" />
         <item itemvalue="JUnit.RequeteTest.getStartJSon" />
-        <item itemvalue="Application.Main " />
         <item itemvalue="JUnit.RequeteTest.getURL" />
       </list>
     </recent_temporary>
@@ -415,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623836656124</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="tests mis à jour">
+      <created>1623914921964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623914921964</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -471,7 +479,8 @@
     <MESSAGE value="hey salut a tous les amis c'est david lafarge pokemon" />
     <MESSAGE value="test ?" />
     <MESSAGE value="les problemes" />
-    <option name="LAST_COMMIT_MESSAGE" value="les problemes" />
+    <MESSAGE value="tests mis à jour" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests mis à jour" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
